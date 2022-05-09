@@ -1,7 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 function PlannerForm(props) {
     const [input, setInput] = useState('');
+
+    const inputRef = useRef(null)
+
+    useEffect(() => {
+        inputRef.current.focus()
+    })
 
     const handleChange = e => {
         setInput(e.target.value)
@@ -28,6 +34,7 @@ function PlannerForm(props) {
         name="text" 
         className="planner-output"
         onChange={handleChange}
+        ref={inputRef}
         />
         <button className="planner-button">Add item</button>
 
